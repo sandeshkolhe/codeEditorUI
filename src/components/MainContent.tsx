@@ -84,6 +84,11 @@ const MainContent: React.FC = () => {
       setExpanded(expanded === panel ? false : panel);
     }
   };
+  const handleTestTag = (panel: string) => {
+    if (!isLoading) {
+      setExpanded(expanded === panel ? false : panel);
+    }
+  };
 
   return (
     <div className="main-content">
@@ -146,12 +151,13 @@ const MainContent: React.FC = () => {
       </Accordion>
 
       {/* Second Accordion: Test Surface Tag Events */}
-      <Accordion>
+      <Accordion expanded={expanded === 'panel2'}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          // expandIcon={<ExpandMoreIcon />}
           aria-controls="panel2a-content"
           id="panel2a-header"
           className="accordion-summary-content"
+          onClick={(event) => event.preventDefault()}
         >
           {/* Status Icon */}
           <div className="status-icon">
@@ -176,6 +182,8 @@ const MainContent: React.FC = () => {
               variant="contained"
               color="primary"
               className="test-tag-button"
+              onClick={() => handleTestTag('panel2')}
+              disabled={isLoading}
             >
               Test Tag
             </Button>
