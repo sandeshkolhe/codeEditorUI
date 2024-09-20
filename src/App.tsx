@@ -1,14 +1,18 @@
 
-// import './App.css'
+import './App.scss'
 import AppLayout from './components/AppLayout'
 import MainContent from './components/MainContent'
+import Sidebar from './components/Sidebar'
 
 function App() {
 
 
   return (
     <>
-     <AppLayout/>
+     <div className="app-container">
+      <Sidebar />
+    <MainContent/>
+    </div>
     </>
   )
 }

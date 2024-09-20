@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Accordion,
   AccordionSummary,
@@ -12,14 +12,17 @@ import {
   Table,
   TableRow,
   Alert,
+  TextField,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import './MainContent.scss';
+import SnippetEditor from './CodeEditor';
+import CodeEditor from './CodeEditor';
 
 const SnippetBox: React.FC = () => {
-  const snippet = `
+  const [snippet, setSnippet] = useState<string>(`
     <script>
       (function(w, d, s, l, i) {
         w[l] = w[l] || [];
@@ -35,7 +38,7 @@ const SnippetBox: React.FC = () => {
         f.parentNode.insertBefore(j, f);
       })(window, document, 'script', 'surface', 'SURFACE_TAG_ID');
     </script>
-  `;
+  `);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(snippet);
@@ -44,7 +47,25 @@ const SnippetBox: React.FC = () => {
 
   return (
     <div className="snippet-box">
-      <pre className="snippet-content">{snippet}</pre>
+      <pre className="snippet-content">
+      {/* <TextField
+        value={snippet}
+        onChange={(e) => setSnippet(e.target.value)}
+        multiline
+        fullWidth
+        minRows={15}
+        maxRows={15}
+        variant="standard"
+        className="snippet-content"
+        InputProps={{
+          disableUnderline: true, 
+        }}
+          spellCheck={false}        
+        autoCorrect="off"
+      /> */}
+      <SnippetEditor/>
+      {/* <CodeEditor/> */}
+      </pre>
       <Button variant="contained" color="primary" className="test-connection">
         Test Connection
       </Button>
@@ -54,7 +75,15 @@ const SnippetBox: React.FC = () => {
 
 const MainContent: React.FC = () => {
   const [isTagInstalled, setIsTagInstalled] = React.useState(false); // Example state for tag installation
-  const [isTagTested, setIsTagTested] = React.useState(false); // State for tag test status
+  const [isTagTested, setIsTagTested] = React.useState(false);
+  const [expanded, setExpanded] = useState<string | false>(false); 
+
+  const [isLoading, setIsLoading] = useState(false);
+  const handleButtonClick = (panel: string) => {
+    if (!isLoading) {
+      setExpanded(expanded === panel ? false : panel);
+    }
+  };
 
   return (
     <div className="main-content">
@@ -63,12 +92,13 @@ const MainContent: React.FC = () => {
       </Typography>
 
       {/* First Accordion: Install Surface Tag */}
-      <Accordion>
+      <Accordion expanded={expanded === 'panel1'}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          // expandIcon=none
           aria-controls="panel1a-content"
           id="panel1a-header"
           className="accordion-summary-content"
+          onClick={(event) => event.preventDefault()}
         >
           {/* Status Icon */}
           <div className="status-icon">
@@ -81,7 +111,7 @@ const MainContent: React.FC = () => {
 
           {/* Title and subtitle */}
           <div className="accordion-title">
-            <Typography variant="subtitle1">Install Surface Tag</Typography>
+            <Typography variant="subtitle1"><strong>Install Surface Tag</strong></Typography>
             <Typography variant="body2" className="analytics-info">
               Enable tracking and analytics
             </Typography>
@@ -93,6 +123,8 @@ const MainContent: React.FC = () => {
               variant="contained"
               color="primary"
               className="install-tag-button"
+              onClick={() => handleButtonClick('panel1')}
+          disabled={isLoading}
             >
               Install Tag
             </Button>
@@ -103,6 +135,7 @@ const MainContent: React.FC = () => {
         </AccordionDetails>
         <Alert severity="success">This is a success Alert.</Alert>
         <Alert severity="error">This is a success Alert.</Alert>
+        <Alert severity="info">This is a success Alert.</Alert>
         <Button
               variant="contained"
               color="primary"
@@ -131,7 +164,7 @@ const MainContent: React.FC = () => {
 
           {/* Title and subtitle */}
           <div className="accordion-title">
-            <Typography variant="subtitle1">Test Surface Tag Events</Typography>
+            <Typography variant="subtitle1"><strong>Test Surface Tag Events</strong></Typography>
             <Typography variant="body2" className="analytics-info">
               Test if surface tag is properly emitting events
             </Typography>

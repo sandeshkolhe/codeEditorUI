@@ -1,119 +1,126 @@
 .main-content {
-    flex-grow: 1;
-    padding: 32px;
-    background-color: #fff; // Set the background color to white
-  
-    .main-heading {
-      margin-bottom: 16px;
-      color: #000; // Ensure the text color is black for contrast
+  flex-grow: 1;
+  padding: 32px;
+  background-color: #fff;
+
+  .main-heading {
+    margin-bottom: 16px;
+    color: #000;
+  }
+
+  .MuiAccordion-root {
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+
+    .MuiAccordionSummary-root {
+      background-color: #fff;
     }
-  
-    .MuiAccordion-root {
-      width: 100%;
-      margin-bottom: 16px;
-      padding: 16px;
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      background-color: #fff; // Ensure accordion background is white
-  
-      .MuiAccordionSummary-root {
-        background-color: #fff; // Set summary background to white
-      }
-  
-      .MuiAccordionDetails-root {
-        background-color: #fff; // Set details background to white
-      }
+
+    .MuiAccordionDetails-root {
+      background-color: #fff;
     }
-  
-    .accordion-summary-content {
+  }
+
+  .accordion-summary-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .status-icon {
       display: flex;
       align-items: center;
-      width: 100%;
-  
-      .status-icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        margin-right: 16px;
-  
-        &.success {
-          color: #4caf50;
-        }
-  
-        &.error {
-          color: #f44336;
-        }
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      margin-right: 16px;
+
+      &.success {
+        color: #4caf50;
       }
-  
-      .accordion-title {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-  
-        .analytics-info {
-          color: #757575;
-        }
-      }
-  
-      .install-tag-button,
-      .test-tag-button {
-        margin-left: auto;
+
+      &.error {
+        color: #f44336;
       }
     }
-  
-    .snippet-box {
-      background-color: #fff;
-      padding: 16px;
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
-      .snippet-content {
-        background-color: #f9f9f9;
-        padding: 12px;
-        border-radius: 4px;
-        font-family: monospace;
-        white-space: pre-wrap;
-      }
-  
-      .test-connection {
-        margin-top: 16px;
+
+    .accordion-title {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      .analytics-info {
+        color: #757575;
       }
     }
-  
-    @media (max-width: 768px) {
-      padding: 16px;
-  
-      .MuiAccordion-root {
-        width: 100%;
-      }
+
+    .install-tag-button,
+    .test-tag-button {
+      margin-left: auto;
+      border-radius: 15%;
+      background-color: #5551ff;
     }
-    table {
-        width: 100%; // Make the table take full width
-        border-collapse: collapse; // Collapse borders for better spacing
-      
-        th, td {
-        border-top: 4px solid #f4f4f4;
-        border-bottom: 4px solid #f4f4f4;
-          padding: 8px; // Add padding to cells
-          text-align: left; // Align text to the left
-        }
-      
-        th {
-          font-weight: bold; // Make heading text bold
-          background-color: transparent; // Remove background color for headers
-        }
-      
-        tr {
-          &:not(:last-child) {
-            border-bottom: 1px solid #000000; // Add border only between rows
-          }
-        }
-      }
-      
   }
-  
+
+  .snippet-box {
+    background-color: #fff;
+    padding: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .snippet-content {
+      background-color: #f9f9f9;
+      padding: 12px;
+      border-radius: 4px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      overflow: auto; // Allow scrolling within snippet editor if needed
+    }
+
+    .test-connection {
+      margin-top: 16px;
+      margin-left: auto;
+    }
+    .try-again-button {
+      align-self: flex-end;
+      align-items: flex-end;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 16px;
+
+    .MuiAccordion-root {
+      width: 100%;
+    }
+  }
+
+  table {
+    width: 100%; // Make the table take full width
+    border-collapse: collapse; // Collapse borders for better spacing
+
+    th, td {
+      border-top: 4px solid #f4f4f4;
+      border-bottom: 4px solid #f4f4f4;
+      padding: 8px; // Add padding to cells
+      text-align: left; // Align text to the left
+    }
+
+    th {
+      font-weight: bold; // Make heading text bold
+      background-color: transparent; // Remove background color for headers
+    }
+
+    tr {
+      &:not(:last-child) {
+        border-bottom: 1px solid #000000; // Add border only between rows
+      }
+    }
+  }
+}
