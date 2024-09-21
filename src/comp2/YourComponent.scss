@@ -1,0 +1,29 @@
+.surface-tag-card {
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    .surface-tag-header {
+      margin-bottom: 1rem;
+    }
+    .code-block {
+      background-color: #f5f5f5;
+      border: 1px solid #e0e0e0;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      font-family: 'Courier New', Courier, monospace;
+      pre {
+        margin: 0;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+    }
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      button {
+        margin-top: 1rem;
+      }
+    }
+  }
+  

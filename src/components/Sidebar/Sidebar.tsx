@@ -2,13 +2,15 @@ import React from 'react';
 import { Typography, Button, Accordion, AccordionSummary, AccordionDetails, Divider } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import PersonIcon from '@mui/icons-material/Person';
-import HomeIcon from '@mui/icons-material/Home';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import FolderOpenIcon from '@mui/icons-material/FolderOpen';
-import SettingsIcon from '@mui/icons-material/Settings';
-import LoopIcon from '@mui/icons-material/Loop';
 import './Sidebar.scss';
+import homeIcon from '../../assets/homeIcon.png';
+import funnelsIcon from '../../assets/funnelsIcon.png';
+import leadsIcon from '../../assets/leadsIcon.png';
+import segmentsIcon from '../../assets/segmentsIcon.png';
+import IntegrationIcon from '../../assets/IntegrationIcon.png';
+import settingsIcon from '../../assets/settingsIcon.png';
+import workflowIcon from '../../assets/workflowIcon.png';
 
 const Sidebar: React.FC = () => {
   return (
@@ -33,25 +35,25 @@ const Sidebar: React.FC = () => {
             <Button className="sidebar-item selected" variant="text" fullWidth startIcon={<CircleOutlinedIcon />}>
               Getting Started
             </Button>
-            <Button className="sidebar-item" variant="text" fullWidth startIcon={<HomeIcon />}>
+            <Button className="sidebar-item" variant="text" fullWidth startIcon={<img src={homeIcon} alt="Settings" />}>
               Overview
             </Button>
-            <Button className="sidebar-item" variant="text" fullWidth startIcon={<FilterAltIcon />}>
+            <Button className="sidebar-item" variant="text" fullWidth startIcon={<img src={funnelsIcon} alt="Settings" />}>
               Funnels
             </Button>
-            <Button className="sidebar-item" variant="text" fullWidth startIcon={<HomeIcon />}>
+            <Button className="sidebar-item" variant="text" fullWidth startIcon={<img src={leadsIcon} alt="Settings" />}>
               Leads
             </Button>
-            <Button className="sidebar-item" variant="text" fullWidth startIcon={<FolderOpenIcon />}>
+            <Button className="sidebar-item" variant="text" fullWidth startIcon={<img src={segmentsIcon} alt="Settings" />}>
               Segments
             </Button>
-            <Button className="sidebar-item" variant="text" fullWidth startIcon={<LoopIcon />}>
+            <Button className="sidebar-item" variant="text" fullWidth startIcon={<img src={workflowIcon} alt="workflowIcon" />}>
               Workflows
             </Button>
-            <Button className="sidebar-item" variant="text" fullWidth startIcon={<HomeIcon />}>
+            <Button className="sidebar-item" variant="text" fullWidth startIcon={<img src={IntegrationIcon} alt="IntegrationIcon" />}>
               Integrations
             </Button>
-            <Button className="sidebar-item" variant="text" fullWidth startIcon={<SettingsIcon />}>
+            <Button className="sidebar-item" variant="text" fullWidth startIcon={<img src={settingsIcon} alt="Settings" />}>
               Settings
             </Button>
           </nav>

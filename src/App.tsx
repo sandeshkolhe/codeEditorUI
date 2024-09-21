@@ -1,8 +1,8 @@
 
 import './App.scss'
-import AppLayout from './components/AppLayout'
-import MainContent from './components/MainContent'
-import Sidebar from './components/Sidebar'
+import MainContent from './components/mainComp/MainContent'
+import Sidebar from './components/Sidebar/Sidebar'
+import SurfaceTagCard from './comp2/SurfaceTagCard'
 
 function App() {
 
@@ -11,7 +11,8 @@ function App() {
     <>
      <div className="app-container">
       <Sidebar />
-    <MainContent/>
+      <MainContent/>
+      {/* <SurfaceTagCard/> */}
     </div>
     </>
   )

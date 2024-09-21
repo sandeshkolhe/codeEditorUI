@@ -18,63 +18,10 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import './MainContent.scss';
-import SnippetEditor from './CodeEditor';
-import CodeEditor from './CodeEditor';
-
-const SnippetBox: React.FC = () => {
-  const [snippet, setSnippet] = useState<string>(`
-    <script>
-      (function(w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({
-          'surface.start': new Date().getTime(),
-          event: 'surface.js'
-        });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != 'surface' ? '&l=' + l : '';
-        j.async = true;
-        j.src = 'https://www.surface-analytics.com/tag.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'surface', 'SURFACE_TAG_ID');
-    </script>
-  `);
-
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(snippet);
-    alert('Snippet copied to clipboard!');
-  };
-
-  return (
-    <div className="snippet-box">
-      <pre className="snippet-content">
-      {/* <TextField
-        value={snippet}
-        onChange={(e) => setSnippet(e.target.value)}
-        multiline
-        fullWidth
-        minRows={15}
-        maxRows={15}
-        variant="standard"
-        className="snippet-content"
-        InputProps={{
-          disableUnderline: true, 
-        }}
-          spellCheck={false}        
-        autoCorrect="off"
-      /> */}
-      <SnippetEditor/>
-      {/* <CodeEditor/> */}
-      </pre>
-      <Button variant="contained" color="primary" className="test-connection">
-        Test Connection
-      </Button>
-    </div>
-  );
-};
+import CodeEditor from './CodeEditor/CodeEditor';
 
 const MainContent: React.FC = () => {
-  const [isTagInstalled, setIsTagInstalled] = React.useState(false); // Example state for tag installation
+  const [isTagInstalled, setIsTagInstalled] = React.useState(false); 
   const [isTagTested, setIsTagTested] = React.useState(false);
   const [expanded, setExpanded] = useState<string | false>(false); 
 
@@ -96,7 +43,8 @@ const MainContent: React.FC = () => {
         Getting Started
       </Typography>
 
-      {/* First Accordion: Install Surface Tag */}
+      <hr className='horizontalLine'/>
+
       <Accordion expanded={expanded === 'panel1'}>
         <AccordionSummary
           // expandIcon=none
@@ -105,14 +53,14 @@ const MainContent: React.FC = () => {
           className="accordion-summary-content"
           onClick={(event) => event.preventDefault()}
         >
-          {/* Status Icon */}
+          { 
           <div className="status-icon">
             {isTagInstalled ? (
               <CheckCircleIcon className="success" />
             ) : (
               <CancelIcon className="error" />
             )}
-          </div>
+          </div>}
 
           {/* Title and subtitle */}
           <div className="accordion-title">
@@ -122,23 +70,29 @@ const MainContent: React.FC = () => {
             </Typography>
           </div>
 
-          {/* Install Tag Button */}
           {!isTagInstalled && (
             <Button
               variant="contained"
               color="primary"
               className="install-tag-button"
               onClick={() => handleButtonClick('panel1')}
-          disabled={isLoading}
+              disabled={isLoading}
             >
               Install Tag
             </Button>
           )}
         </AccordionSummary>
         <AccordionDetails>
-          <SnippetBox />
-        </AccordionDetails>
-        <Alert severity="success">This is a success Alert.</Alert>
+        <div className='firstAccordianExpanded'>
+          <CodeEditor />
+        
+          <Alert
+            severity="success"
+            sx={{ backgroundColor: '#EFFAF6', color: '#4CAF50' }}
+            // icon={<img src="../assets/alertSuccess.png" alt="Success Icon" style={{ width: 24, height: 24 }} />}
+        >
+            This is a success Alert.
+        </Alert>
         <Alert severity="error">This is a success Alert.</Alert>
         <Alert severity="info">This is a success Alert.</Alert>
         <Button
@@ -148,6 +102,8 @@ const MainContent: React.FC = () => {
             >
               Try Again
             </Button>
+            </div>
+            </AccordionDetails>
       </Accordion>
 
       {/* Second Accordion: Test Surface Tag Events */}
